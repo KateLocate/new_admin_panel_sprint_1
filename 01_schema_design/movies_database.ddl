@@ -20,10 +20,8 @@ CREATE TABLE IF NOT EXISTS content.person(
 
 CREATE TABLE IF NOT EXISTS content.person_film_work(
     id uuid PRIMARY KEY,
-    FOREIGN KEY(person_id)
-        REFERENCES content.person(person_id),
-    FOREIGN KEY(film_work_id)
-        REFERENCES content.film_work(film_work_id),
+    person_id uuid REFERENCES content.person,
+    film_work_id REFERENCES content.film_work,
     role TEXT NOT NULL,
     created TIMESTAMP WITH TIME ZONE
 );
@@ -38,10 +36,8 @@ CREATE TABLE IF NOT EXISTS content.genre(
 
 CREATE TABLE IF NOT EXISTS content.genre_film_work(
     id uuid PRIMARY KEY,
-    FOREIGN KEY(genre_id)
-        REFERENCES content.genre(genre_id),
-    FOREIGN KEY(film_work_id)
-        REFERENCES content.genre(film_work_id),
+    genre_id uuid REFERENCES content.genre(genre_id),
+    film_work_id uuid REFERENCES content.genre(film_work_id),
     created TIMESTAMP WITH TIME ZONE
 );
 
