@@ -49,4 +49,4 @@ CREATE UNIQUE INDEX film_work_person_idx
     ON content.person_film_work (film_work_id, person_id, role);
 
 CREATE UNIQUE INDEX film_work_idx
-    ON content.film_work (film_work_id, title, creation_date);
+    ON content.film_work (title, creation_date);
