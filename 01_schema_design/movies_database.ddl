@@ -1,3 +1,4 @@
+drop schema content cascade;
 CREATE SCHEMA IF NOT EXISTS content;
 
 CREATE TABLE IF NOT EXISTS content.film_work(
@@ -21,7 +22,7 @@ CREATE TABLE IF NOT EXISTS content.person(
 CREATE TABLE IF NOT EXISTS content.person_film_work(
     id uuid PRIMARY KEY,
     person_id uuid REFERENCES content.person,
-    film_work_id REFERENCES content.film_work,
+    film_work_id uuid REFERENCES content.film_work,
     role TEXT NOT NULL,
     created TIMESTAMP WITH TIME ZONE
 );
@@ -36,8 +37,8 @@ CREATE TABLE IF NOT EXISTS content.genre(
 
 CREATE TABLE IF NOT EXISTS content.genre_film_work(
     id uuid PRIMARY KEY,
-    genre_id uuid REFERENCES content.genre(genre_id),
-    film_work_id uuid REFERENCES content.genre(film_work_id),
+    genre_id uuid REFERENCES content.genre(id),
+    film_work_id uuid REFERENCES content.genre(id),
     created TIMESTAMP WITH TIME ZONE
 );
 
