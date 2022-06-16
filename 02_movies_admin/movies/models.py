@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class Genre(models.Model):
@@ -14,14 +15,22 @@ class Genre(models.Model):
         verbose_name = 'Жанр'
         verbose_name_plural = 'Жанры'
 
+    def __str__(self):
+        return self.name
+
 
 class Filmwork(models.Model):
+
+    class FilmworkType(models.TextChoices):
+        MOVIE = 'movie', _('movie')
+        TV_SHOW = 'tv_show', _('tv_show')
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.TextField('title')
     description = models.TextField('description', blank=True)
     creation_date = models.DateField('creation_date')
     rating = models.FloatField('rating', blank=True)
-    type = models.TextField('type', blank=True)
+    type = models.CharField('type', choices=FilmworkType.choices, max_length=15)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
@@ -30,5 +39,5 @@ class Filmwork(models.Model):
         verbose_name = 'Фильм'
         verbose_name_plural = 'Фильмы'
 
-    # def __str__(self):
-    #     return self.title
+    def __str__(self):
+        return self.title
