@@ -39,6 +39,7 @@ class Filmwork(UUIDMixin, TimeStampedMixin):
         TV_SHOW = 'tv_show', _('tv_show')
 
     title = models.TextField('title')
+    genres = models.ManyToManyField(Genre, through='GenreFilmwork')
     description = models.TextField('description', blank=True)
     creation_date = models.DateField('creation_date')
     rating = models.FloatField('rating', blank=True,
@@ -53,3 +54,23 @@ class Filmwork(UUIDMixin, TimeStampedMixin):
 
     def __str__(self):
         return self.title
+
+
+class GenreFilmwork(UUIDMixin):
+    film_work = models.ForeignKey('Filmwork', on_delete=models.CASCADE)
+    genre = models.ForeignKey('Genre', on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = '"content"."genre_film_work"'
+
+
+class Person(UUIDMixin, TimeStampedMixin):
+    full_name = models.TextField('full_name')
+
+
+class PersonFilmwork(UUIDMixin):
+    film_work = models.ForeignKey('Filmwork', on_delete=models.CASCADE)
+    person = models.ForeignKey('Person', on_delete=models.CASCADE)
+    role = models.TextField('role', null=True)
+    created = models.DateTimeField(auto_now_add=True)
