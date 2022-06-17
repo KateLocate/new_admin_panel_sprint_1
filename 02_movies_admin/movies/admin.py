@@ -7,11 +7,6 @@ class GenreAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Filmwork)
-class FilmworkAdmin(admin.ModelAdmin):
-    pass
-
-
 class GenreFilmworkInline(admin.TabularInline):
     model = GenreFilmwork
 
