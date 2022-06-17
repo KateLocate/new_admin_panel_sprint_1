@@ -68,7 +68,7 @@ class GenreFilmwork(UUIDMixin):
 
 
 class Person(UUIDMixin, TimeStampedMixin):
-    full_name = models.TextField('full_name')
+    full_name = models.TextField(_('full_name'))
 
     class Meta:
         db_table = '"content"."person"'
