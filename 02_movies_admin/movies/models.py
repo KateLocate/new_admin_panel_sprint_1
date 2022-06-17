@@ -1,14 +1,27 @@
 import uuid
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.translation import gettext_lazy as _
 
 
-class Genre(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField('name', max_length=255)
-    description = models.TextField('description', blank=True)
+class TimeStampedMixin(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+class UUIDMixin(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+    class Meta:
+        abstract = True
+
+
+class Genre(UUIDMixin, TimeStampedMixin):
+    name = models.CharField('name', max_length=255)
+    description = models.TextField('description', blank=True)
 
     class Meta:
         db_table = '"content"."genre"'
@@ -19,20 +32,19 @@ class Genre(models.Model):
         return self.name
 
 
-class Filmwork(models.Model):
+class Filmwork(UUIDMixin, TimeStampedMixin):
 
     class FilmworkType(models.TextChoices):
         MOVIE = 'movie', _('movie')
         TV_SHOW = 'tv_show', _('tv_show')
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.TextField('title')
     description = models.TextField('description', blank=True)
     creation_date = models.DateField('creation_date')
-    rating = models.FloatField('rating', blank=True)
+    rating = models.FloatField('rating', blank=True,
+                               validators=[MinValueValidator(0),
+                                           MaxValueValidator(100)])
     type = models.CharField('type', choices=FilmworkType.choices, max_length=15)
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
 
     class Meta:
         db_table = '"content"."film_work"'
