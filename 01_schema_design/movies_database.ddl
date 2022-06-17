@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS content.genre(
 CREATE TABLE IF NOT EXISTS content.genre_film_work(
     id uuid PRIMARY KEY,
     genre_id uuid REFERENCES content.genre(id),
-    film_work_id uuid REFERENCES content.genre(id),
+    film_work_id uuid REFERENCES content.film_work(id),
     created TIMESTAMP WITH TIME ZONE
 );
 
