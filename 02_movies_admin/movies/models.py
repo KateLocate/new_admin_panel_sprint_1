@@ -85,5 +85,8 @@ class PersonFilmwork(UUIDMixin):
     role = models.TextField('role', null=True)
     created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        db_table = '"content"."person_film_work"'
+
     def __str__(self):
         return f'{self.role} {self.person.full_name}'
