@@ -2,6 +2,7 @@ import uuid
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.translation import gettext_lazy as _
+from models_choices import Gender, FilmworkType
 
 
 class TimeStampedMixin(models.Model):
@@ -33,10 +34,6 @@ class Genre(UUIDMixin, TimeStampedMixin):
 
 
 class Filmwork(UUIDMixin, TimeStampedMixin):
-    class FilmworkType(models.TextChoices):
-        MOVIE = 'movie', _('movie')
-        TV_SHOW = 'tv_show', _('tv_show')
-
     title = models.TextField(_('title'))
     certificate = models.CharField(_('certificate'), max_length=512, blank=True)
     file_path = models.FileField(_('file'), blank=True, null=True, upload_to='movies/')
@@ -69,11 +66,6 @@ class GenreFilmwork(UUIDMixin):
 
     def __str__(self):
         return self.genre.name
-
-
-class Gender(models.TextChoices):
-    MALE = 'male', _('male')
-    FEMALE = 'female', _('female')
 
 
 class Person(UUIDMixin, TimeStampedMixin):
