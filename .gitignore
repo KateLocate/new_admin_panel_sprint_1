@@ -1,5 +1,6 @@
+__pycache__
 .env
 .python-version
-__pycache__
 *.csv
+*.txt
 *.sqlite3
