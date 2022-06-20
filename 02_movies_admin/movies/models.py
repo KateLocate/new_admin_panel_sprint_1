@@ -71,8 +71,14 @@ class GenreFilmwork(UUIDMixin):
         return self.genre.name
 
 
+class Gender(models.TextChoices):
+    MALE = 'male', _('male')
+    FEMALE = 'female', _('female')
+
+
 class Person(UUIDMixin, TimeStampedMixin):
     full_name = models.TextField(_('full_name'))
+    gender = models.TextField(_('gender'), choices=Gender.choices, null=True)
 
     class Meta:
         db_table = '"content"."person"'
