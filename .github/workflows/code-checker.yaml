@@ -1,4 +1,4 @@
-name: Проверка
+name: Check
 on: [push]
 jobs:
   linter:
@@ -17,7 +17,7 @@ jobs:
     - name: Flake8
       run: flake8 .
   tests:
-    name: Тесты 
+    name: Tests
     runs-on: ubuntu-latest
     steps:    
     - uses: actions/checkout@v2
