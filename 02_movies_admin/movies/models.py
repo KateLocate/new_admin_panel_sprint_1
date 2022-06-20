@@ -62,6 +62,8 @@ class GenreFilmwork(UUIDMixin):
 
     class Meta:
         db_table = '"content"."genre_film_work"'
+        verbose_name = _('Film Genre')
+        verbose_name_plural = _('Film Genres')
 
     def __str__(self):
         return self.genre.name
@@ -87,6 +89,8 @@ class PersonFilmwork(UUIDMixin):
 
     class Meta:
         db_table = '"content"."person_film_work"'
+        verbose_name = _('Person From Film')
+        verbose_name_plural = _('Persons From Film')
 
     def __str__(self):
         return f'{self.role} {self.person.full_name}'
