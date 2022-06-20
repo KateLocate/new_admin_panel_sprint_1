@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-20 08:33+0000\n"
+"POT-Creation-Date: 2022-06-20 09:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "movies"
 msgstr "Movies"
 
-#: movies/models.py:8 movies/models.py:61
+#: movies/models.py:8 movies/models.py:63
 msgid "created"
 msgstr "Created"
 
@@ -34,7 +34,7 @@ msgstr "Modified"
 msgid "name"
 msgstr "Name"
 
-#: movies/models.py:24 movies/models.py:42
+#: movies/models.py:24 movies/models.py:44
 msgid "description"
 msgstr "Description"
 
@@ -58,58 +58,66 @@ msgstr "TV Show"
 msgid "title"
 msgstr "Title"
 
-#: movies/models.py:43
+#: movies/models.py:41
+msgid "certificate"
+msgstr "Certificate"
+
+#: movies/models.py:42
+msgid "file"
+msgstr "File path"
+
+#: movies/models.py:45
 msgid "creation_date"
 msgstr "Creation Date"
 
-#: movies/models.py:44
+#: movies/models.py:46
 msgid "rating"
 msgstr "Rating"
 
-#: movies/models.py:47
+#: movies/models.py:49
 msgid "type"
 msgstr "Type"
 
-#: movies/models.py:51
+#: movies/models.py:53
 msgid "Film"
 msgstr "Film"
 
-#: movies/models.py:52
+#: movies/models.py:54
 msgid "Films"
 msgstr "Films"
 
-#: movies/models.py:65
+#: movies/models.py:67
 #, fuzzy
 #| msgid "Genre"
 msgid "Film Genre"
 msgstr "Genre"
 
-#: movies/models.py:66
+#: movies/models.py:68
 #, fuzzy
 #| msgid "Genres"
 msgid "Film Genres"
 msgstr "Genres"
 
-#: movies/models.py:73
+#: movies/models.py:75
 msgid "full_name"
 msgstr "Name"
 
-#: movies/models.py:77
+#: movies/models.py:79
 msgid "Person"
 msgstr "Person"
 
-#: movies/models.py:78
+#: movies/models.py:80
 msgid "Persons"
 msgstr "Persons"
 
-#: movies/models.py:87
+#: movies/models.py:89
 msgid "role"
 msgstr "Role"
 
-#: movies/models.py:92
+#: movies/models.py:94
 msgid "Person From Film"
 msgstr "Person From Film"
 
-#: movies/models.py:93
+#: movies/models.py:95
 msgid "Persons From Film"
 msgstr "Persons From Film"
