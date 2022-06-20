@@ -38,6 +38,8 @@ class Filmwork(UUIDMixin, TimeStampedMixin):
         TV_SHOW = 'tv_show', _('tv_show')
 
     title = models.TextField(_('title'))
+    certificate = models.CharField(_('certificate'), max_length=512, blank=True)
+    file_path = models.FileField(_('file'), blank=True, null=True, upload_to='movies/')
     genres = models.ManyToManyField(Genre, through='GenreFilmwork')
     description = models.TextField(_('description'), blank=True)
     creation_date = models.DateField(_('creation_date'))
