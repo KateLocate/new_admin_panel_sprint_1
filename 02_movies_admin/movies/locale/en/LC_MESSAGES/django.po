@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-20 09:31+0000\n"
+"POT-Creation-Date: 2022-06-20 13:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,102 +22,114 @@ msgstr ""
 msgid "movies"
 msgstr "Movies"
 
-#: movies/models.py:8 movies/models.py:63
+#: movies/models.py:9 movies/models.py:60
 msgid "created"
-msgstr "Created"
+msgstr "created"
 
-#: movies/models.py:9
+#: movies/models.py:10
 msgid "modified"
-msgstr "Modified"
+msgstr "modified"
 
-#: movies/models.py:23
+#: movies/models.py:24
 msgid "name"
-msgstr "Name"
+msgstr "name"
 
-#: movies/models.py:24 movies/models.py:44
+#: movies/models.py:25 movies/models.py:41
 msgid "description"
-msgstr "Description"
+msgstr "description"
 
-#: movies/models.py:28
+#: movies/models.py:29
 msgid "Genre"
 msgstr "Genre"
 
-#: movies/models.py:29
+#: movies/models.py:30
 msgid "Genres"
 msgstr "Genres"
 
 #: movies/models.py:37
-msgid "movie"
-msgstr "Movie"
+msgid "title"
+msgstr "title"
 
 #: movies/models.py:38
-msgid "tv_show"
-msgstr "TV Show"
-
-#: movies/models.py:40
-msgid "title"
-msgstr "Title"
-
-#: movies/models.py:41
 msgid "certificate"
-msgstr "Certificate"
+msgstr "certificate"
+
+#: movies/models.py:39
+msgid "file"
+msgstr "file path"
 
 #: movies/models.py:42
-msgid "file"
-msgstr "File path"
-
-#: movies/models.py:45
 msgid "creation_date"
-msgstr "Creation Date"
+msgstr "creation Date"
+
+#: movies/models.py:43
+msgid "rating"
+msgstr "rating"
 
 #: movies/models.py:46
-msgid "rating"
-msgstr "Rating"
-
-#: movies/models.py:49
 msgid "type"
-msgstr "Type"
+msgstr "type"
 
-#: movies/models.py:53
+#: movies/models.py:50
 msgid "Film"
 msgstr "Film"
 
-#: movies/models.py:54
+#: movies/models.py:51
 msgid "Films"
 msgstr "Films"
 
-#: movies/models.py:67
+#: movies/models.py:64
 #, fuzzy
 #| msgid "Genre"
 msgid "Film Genre"
 msgstr "Genre"
 
-#: movies/models.py:68
+#: movies/models.py:65
 #, fuzzy
 #| msgid "Genres"
 msgid "Film Genres"
 msgstr "Genres"
 
-#: movies/models.py:75
+#: movies/models.py:72
 msgid "full_name"
-msgstr "Name"
+msgstr "name"
 
-#: movies/models.py:79
+#: movies/models.py:73
+msgid "gender"
+msgstr "gender"
+
+#: movies/models.py:77
 msgid "Person"
 msgstr "Person"
 
-#: movies/models.py:80
+#: movies/models.py:78
 msgid "Persons"
 msgstr "Persons"
 
-#: movies/models.py:89
+#: movies/models.py:87
 msgid "role"
-msgstr "Role"
+msgstr "role"
 
-#: movies/models.py:94
+#: movies/models.py:92
 msgid "Person From Film"
 msgstr "Person From Film"
 
-#: movies/models.py:95
+#: movies/models.py:93
 msgid "Persons From Film"
 msgstr "Persons From Film"
+
+#: movies/models_choices.py:6
+msgid "male"
+msgstr "male"
+
+#: movies/models_choices.py:7
+msgid "female"
+msgstr "female"
+
+#: movies/models_choices.py:11
+msgid "movie"
+msgstr "movie"
+
+#: movies/models_choices.py:12
+msgid "tv_show"
+msgstr "TV show"

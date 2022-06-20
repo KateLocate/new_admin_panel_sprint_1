@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-20 09:31+0000\n"
+"POT-Creation-Date: 2022-06-20 13:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,98 +24,110 @@ msgstr ""
 msgid "movies"
 msgstr "Фильмы"
 
-#: movies/models.py:8 movies/models.py:63
+#: movies/models.py:9 movies/models.py:60
 msgid "created"
 msgstr "Дата создания"
 
-#: movies/models.py:9
+#: movies/models.py:10
 msgid "modified"
 msgstr "Дата изменения"
 
-#: movies/models.py:23
+#: movies/models.py:24
 msgid "name"
 msgstr "Название"
 
-#: movies/models.py:24 movies/models.py:44
+#: movies/models.py:25 movies/models.py:41
 msgid "description"
 msgstr "Описание"
 
-#: movies/models.py:28
+#: movies/models.py:29
 msgid "Genre"
 msgstr "Жанр"
 
-#: movies/models.py:29
+#: movies/models.py:30
 msgid "Genres"
 msgstr "Жанры"
 
 #: movies/models.py:37
-msgid "movie"
-msgstr "Фильм"
-
-#: movies/models.py:38
-msgid "tv_show"
-msgstr "ТВ шоу"
-
-#: movies/models.py:40
 msgid "title"
 msgstr "Название"
 
-#: movies/models.py:41
+#: movies/models.py:38
 msgid "certificate"
 msgstr "Сертификат"
 
-#: movies/models.py:42
+#: movies/models.py:39
 msgid "file"
-msgstr "Ссылка на файл"
+msgstr "ссылка на файл"
 
-#: movies/models.py:45
+#: movies/models.py:42
 msgid "creation_date"
-msgstr "Дата создания"
+msgstr "дата создания"
+
+#: movies/models.py:43
+msgid "rating"
+msgstr "рейтинг"
 
 #: movies/models.py:46
-msgid "rating"
-msgstr "Рейтинг"
-
-#: movies/models.py:49
 msgid "type"
-msgstr "Тип"
+msgstr "тип"
 
-#: movies/models.py:53
+#: movies/models.py:50
 msgid "Film"
 msgstr "Фильм"
 
-#: movies/models.py:54
+#: movies/models.py:51
 msgid "Films"
 msgstr "Фильмы"
 
-#: movies/models.py:67
+#: movies/models.py:64
 msgid "Film Genre"
 msgstr "Жанр фильма"
 
-#: movies/models.py:68
+#: movies/models.py:65
 msgid "Film Genres"
 msgstr "Жанры фильма"
 
-#: movies/models.py:75
+#: movies/models.py:72
 msgid "full_name"
-msgstr "Имя"
+msgstr "имя"
 
-#: movies/models.py:79
+#: movies/models.py:73
+msgid "gender"
+msgstr "пол"
+
+#: movies/models.py:77
 msgid "Person"
-msgstr "Человек"
+msgstr "человек"
 
-#: movies/models.py:80
+#: movies/models.py:78
 msgid "Persons"
-msgstr "Люди"
+msgstr "люди"
 
-#: movies/models.py:89
+#: movies/models.py:87
 msgid "role"
-msgstr "Роль"
+msgstr "роль"
 
-#: movies/models.py:94
+#: movies/models.py:92
 msgid "Person From Film"
-msgstr "Участник фильма"
+msgstr "участник фильма"
 
-#: movies/models.py:95
+#: movies/models.py:93
 msgid "Persons From Film"
-msgstr "Участники фильма"
+msgstr "участники фильма"
+
+#: movies/models_choices.py:6
+msgid "male"
+msgstr "мужчина"
+
+#: movies/models_choices.py:7
+msgid "female"
+msgstr "женщина"
+
+#: movies/models_choices.py:11
+msgid "movie"
+msgstr "фильм"
+
+#: movies/models_choices.py:12
+msgid "tv_show"
+msgstr "ТВ шоу"
