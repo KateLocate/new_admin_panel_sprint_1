@@ -1,9 +1,6 @@
-"""
-Database settings for config project.
-"""
+"""Database settings for config project."""
 
 import os
-
 
 DATABASES = {
     'default': {
