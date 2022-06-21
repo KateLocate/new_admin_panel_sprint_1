@@ -1,63 +1,57 @@
-"""
-Models structure for movies app.
-"""
+"""Models structure for movies app."""
 
 import uuid
 
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils.translation import gettext_lazy as _
 
 from movies.models_choices import Gender, FilmworkType
 
 
 class TimeStampedMixin(models.Model):
-    """
-    Represents basic time attributes for creating and updating entries.
-    """
+    """Represents basic time attributes for creating and updating entries."""
 
     created = models.DateTimeField(_('created'), auto_now_add=True)
     modified = models.DateTimeField(_('modified'), auto_now=True)
 
     class Meta:
+        """Meta information on TimeStampedMixin."""
+
         abstract = True
 
 
 class UUIDMixin(models.Model):
-    """
-    Represents id attribute containing UUID for creating entries.
-    """
+    """Represents id attribute containing UUID for creating entries."""
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     class Meta:
+        """Meta information on UUIDMixin."""
+
         abstract = True
 
 
 class Genre(UUIDMixin, TimeStampedMixin):
-    """
-    Stores a single genre entry.
-    """
+    """Stores a single genre entry."""
 
     name = models.CharField(_('name'), max_length=255)
     description = models.TextField(_('description'), blank=True)
 
     class Meta:
-        """Meta information on :model:`movies.Genre`"""
+        """Meta information on :model:`movies.Genre`."""
 
         db_table = '"content"."genre"'
         verbose_name = _('Genre')
         verbose_name_plural = _('Genres')
 
     def __str__(self):
-        """Method used to get verbose representation of Genre entry."""
+        """Verbose representation of Genre entry."""
         return self.name
 
 
 class Filmwork(UUIDMixin, TimeStampedMixin):
-    """
-    Stores a single filmwork entry, related to :model:`movies.Genre`.
-    """
+    """Stores a single filmwork entry, related to :model:`movies.Genre`."""
 
     title = models.TextField(_('title'))
     certificate = models.CharField(
@@ -70,29 +64,28 @@ class Filmwork(UUIDMixin, TimeStampedMixin):
     description = models.TextField(_('description'), blank=True)
     creation_date = models.DateField(_('creation_date'))
     rating = models.FloatField(
-        _('rating'), blank=True,
-        validators=[MinValueValidator(0),
-                    MaxValueValidator(100)],
+        _('rating'),
+        blank=True,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
     )
     type = models.CharField(
         _('type'), choices=FilmworkType.choices, max_length=15,
     )
 
     class Meta:
-        """Meta information on :model:`movies.Filmwork`"""
+        """Meta information on :model:`movies.Filmwork`."""
 
         db_table = '"content"."film_work"'
         verbose_name = _('Film')
         verbose_name_plural = _('Films')
 
     def __str__(self):
-        """Method used to get verbose representation of Filmwork entry."""
+        """Verbose representation of Filmwork entry."""
         return self.title
 
 
 class GenreFilmwork(UUIDMixin):
-    """
-    Stores a single filmwork genre entry,
+    """Stores a single filmwork genre entry,
     related to :model:`movies.Filmwork` and :model:`movies.Genre`.
     """
 
@@ -101,40 +94,37 @@ class GenreFilmwork(UUIDMixin):
     created = models.DateTimeField(_('created'), auto_now_add=True)
 
     class Meta:
-        """Meta information on :model:`movies.GenreFilmwork`"""
+        """Meta information on :model:`movies.GenreFilmwork`."""
 
         db_table = '"content"."genre_film_work"'
         verbose_name = _('Film Genre')
         verbose_name_plural = _('Film Genres')
 
     def __str__(self):
-        """Method used to get verbose representation of GenreFilmwork entry."""
+        """Verbose representation of GenreFilmwork entry."""
         return self.genre.name
 
 
 class Person(UUIDMixin, TimeStampedMixin):
-    """
-    Stores a single person entry.
-    """
+    """Stores a single person entry."""
 
     full_name = models.TextField(_('full_name'))
     gender = models.TextField(_('gender'), choices=Gender.choices, null=True)
 
     class Meta:
-        """Meta information on :model:`movies.Person`"""
+        """Meta information on :model:`movies.Person`."""
 
         db_table = '"content"."person"'
         verbose_name = _('Person')
         verbose_name_plural = _('Persons')
 
     def __str__(self):
-        """Method used to get verbose representation of Person entry."""
+        """Verbose representation of Person entry."""
         return self.full_name
 
 
 class PersonFilmwork(UUIDMixin):
-    """
-    Stores a single filmwork person entry,
+    """Stores a single filmwork person entry,
     related to :model:`movies.Filmwork` and :model:`movies.Person`.
     """
 
@@ -144,12 +134,12 @@ class PersonFilmwork(UUIDMixin):
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        """Meta information on :model:`movies.PersonFilmwork`"""
+        """Meta information on :model:`movies.PersonFilmwork`."""
 
         db_table = '"content"."person_film_work"'
         verbose_name = _('Person From Film')
         verbose_name_plural = _('Persons From Film')
 
     def __str__(self):
-        """Method used to get verbose representation of PersonFilmwork entry"""
+        """Verbose representation of PersonFilmwork entry."""
         return f'{self.role} {self.person.full_name}'

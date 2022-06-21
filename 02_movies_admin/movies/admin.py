@@ -1,6 +1,4 @@
-"""
-Admin panel configuration for movies app.
-"""
+"""Admin panel configuration for movies app."""
 
 from django.contrib import admin
 
