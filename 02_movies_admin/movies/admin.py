@@ -2,13 +2,7 @@
 
 from django.contrib import admin
 
-from movies.models import (
-    Filmwork,
-    Genre,
-    GenreFilmwork,
-    Person,
-    PersonFilmwork,
-)
+from movies.models import Filmwork, Genre, GenreFilmwork, Person, PersonFilmwork
 
 
 @admin.register(Genre)
@@ -46,7 +40,12 @@ class FilmworkAdmin(admin.ModelAdmin):
     inlines = (GenreFilmworkInline, PersonFilmworkInline)
 
     list_display = (
-        'title', 'type', 'creation_date', 'rating', 'created', 'modified',
+        'title',
+        'type',
+        'creation_date',
+        'rating',
+        'created',
+        'modified',
     )
     list_filter = ('type', 'rating', 'genres')
     search_fields = ('title', 'description', 'id')
