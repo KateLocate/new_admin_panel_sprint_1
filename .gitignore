@@ -1,0 +1,6 @@
+__pycache__
+.env
+.python-version
+*.csv
+*.txt
+*.sqlite3

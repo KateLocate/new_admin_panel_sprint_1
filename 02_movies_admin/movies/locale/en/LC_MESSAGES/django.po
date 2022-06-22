@@ -1,0 +1,135 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-20 13:03+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: movies/apps.py:8
+msgid "movies"
+msgstr "Movies"
+
+#: movies/models.py:9 movies/models.py:60
+msgid "created"
+msgstr "created"
+
+#: movies/models.py:10
+msgid "modified"
+msgstr "modified"
+
+#: movies/models.py:24
+msgid "name"
+msgstr "name"
+
+#: movies/models.py:25 movies/models.py:41
+msgid "description"
+msgstr "description"
+
+#: movies/models.py:29
+msgid "Genre"
+msgstr "Genre"
+
+#: movies/models.py:30
+msgid "Genres"
+msgstr "Genres"
+
+#: movies/models.py:37
+msgid "title"
+msgstr "title"
+
+#: movies/models.py:38
+msgid "certificate"
+msgstr "certificate"
+
+#: movies/models.py:39
+msgid "file"
+msgstr "file path"
+
+#: movies/models.py:42
+msgid "creation_date"
+msgstr "creation Date"
+
+#: movies/models.py:43
+msgid "rating"
+msgstr "rating"
+
+#: movies/models.py:46
+msgid "type"
+msgstr "type"
+
+#: movies/models.py:50
+msgid "Film"
+msgstr "Film"
+
+#: movies/models.py:51
+msgid "Films"
+msgstr "Films"
+
+#: movies/models.py:64
+#, fuzzy
+#| msgid "Genre"
+msgid "Film Genre"
+msgstr "Genre"
+
+#: movies/models.py:65
+#, fuzzy
+#| msgid "Genres"
+msgid "Film Genres"
+msgstr "Genres"
+
+#: movies/models.py:72
+msgid "full_name"
+msgstr "name"
+
+#: movies/models.py:73
+msgid "gender"
+msgstr "gender"
+
+#: movies/models.py:77
+msgid "Person"
+msgstr "Person"
+
+#: movies/models.py:78
+msgid "Persons"
+msgstr "Persons"
+
+#: movies/models.py:87
+msgid "role"
+msgstr "role"
+
+#: movies/models.py:92
+msgid "Person From Film"
+msgstr "Person From Film"
+
+#: movies/models.py:93
+msgid "Persons From Film"
+msgstr "Persons From Film"
+
+#: movies/models_choices.py:6
+msgid "male"
+msgstr "male"
+
+#: movies/models_choices.py:7
+msgid "female"
+msgstr "female"
+
+#: movies/models_choices.py:11
+msgid "movie"
+msgstr "movie"
+
+#: movies/models_choices.py:12
+msgid "tv_show"
+msgstr "TV show"
