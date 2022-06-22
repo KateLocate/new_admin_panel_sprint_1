@@ -2,11 +2,11 @@
 
 import uuid
 
-from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from movies.models_choices import Gender, FilmworkType
+from movies.models_choices import FilmworkType, Gender
 
 
 class TimeStampedMixin(models.Model):
@@ -141,5 +141,9 @@ class PersonFilmwork(UUIDMixin):
         verbose_name_plural = _('Persons From Film')
 
     def __str__(self):
-        """Verbose representation of PersonFilmwork entry."""
+        """Verbose representation of PersonFilmwork entry.
+
+        Returns:
+             str
+        """
         return f'{self.role} {self.person.full_name}'
