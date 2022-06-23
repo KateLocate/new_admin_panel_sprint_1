@@ -21,15 +21,23 @@ def sqlite3_conn_context(db_path: str) -> sqlite3.Connection:
 
 
 def load_from_sqlite(
-    connection: sqlite3.Connection, pg_conn: _connection, tables_and_datacls: dict, fields_diff: dict, batch_size: int
+    connection: sqlite3.Connection, pg_conn: _connection, batch_size: int
 ):
     """Main function to transfer data from SQLite to Postgres"""
+    sqlite_vs_datacls = {
+        'genre': Genre,
+        'person': Person,
+        'film_work': Filmwork,
+        'genre_film_work': GenreFilmwork,
+        'person_film_work': PersonFilmwork,
+    }
+    sqlite_tables = sqlite_vs_datacls.keys()
     postgres_saver = PostgresSaver(pg_conn)
     sqlite_loader = SQLiteLoader(connection)
 
-    data = sqlite_loader.load_movies(['film_work'], batch_size)
-    for batch in data:
-        postgres_saver.save_all_data(tables_and_datacls, fields_diff, batch)
+    data_generator = sqlite_loader.load_movies(sqlite_tables, batch_size)
+    for batch in data_generator:
+        postgres_saver.save_all_data(sqlite_vs_datacls, batch)
 
 
 if __name__ == '__main__':
@@ -46,17 +54,8 @@ if __name__ == '__main__':
         'port': os.environ.get('DB_PORT'),
     }
     batch_size = 200
-    sqlite_vs_datacls = {
-        'film_work': Filmwork,
-        'genre_film_work': GenreFilmwork,
-        'person_film_work': PersonFilmwork,
-        'genre': Genre,
-        'person': Person,
-    }
-
-    fields_diff = {'created_at': 'created', 'updated_at': 'modified'}
 
     with sqlite3_conn_context('db.sqlite') as sqlite_conn, psycopg2.connect(
         **dsl, cursor_factory=DictCursor
     ) as pg_conn:
-        load_from_sqlite(sqlite_conn, pg_conn, sqlite_vs_datacls, fields_diff, batch_size)
+        load_from_sqlite(sqlite_conn, pg_conn, batch_size)
