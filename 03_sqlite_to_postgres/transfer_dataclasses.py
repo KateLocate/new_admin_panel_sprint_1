@@ -2,51 +2,65 @@
 from dataclasses import dataclass, field
 
 
-@dataclass(frozen=True)
+def datacls_field_adapter(cls):
+    def adapter(**kwargs):
+        fields_diff = {'created_at': 'created', 'updated_at': 'modified'}
+        for f_sqlite, f_postgre in fields_diff.items():
+            if kwargs.get(f_sqlite, None):
+                kwargs[f_postgre] = kwargs.pop(f_sqlite)
+        return cls(**kwargs)
+    return adapter
+
+
+@dataclass(frozen=True, kw_only=True)
 class TimeStamped:
     created: str
     modified: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class UUIDField:
     id: str
 
 
-@dataclass(frozen=True)
+@datacls_field_adapter
+@dataclass(frozen=True, kw_only=True)
 class Filmwork(UUIDField, TimeStamped):
     title: str
     file_path: str
-    genres: list
     description: str
     creation_date: str
     rating: float
-    type: str
+    type: str = field(default='')
     certificate: str = field(default='')
 
 
-@dataclass(frozen=True)
+@datacls_field_adapter
+@dataclass(frozen=True, kw_only=True)
 class Person(UUIDField, TimeStamped):
     full_name: str
     gender: str = field(default='')
 
 
-@dataclass(frozen=True)
+@datacls_field_adapter
+@dataclass(frozen=True, kw_only=True)
 class PersonFilmwork(UUIDField):
-    film_work: str
-    person: str
+    film_work_id: str
+    person_id: str
     role: str
     created: str
 
 
-@dataclass(frozen=True)
+@datacls_field_adapter
+@dataclass(frozen=True, kw_only=True)
 class Genre(UUIDField, TimeStamped):
     name: str
     description: str
 
 
-@dataclass(frozen=True)
+@datacls_field_adapter
+@dataclass(frozen=True, kw_only=True)
 class GenreFilmwork(UUIDField):
-    film_work: str
-    genre: str
+    film_work_id: str
+    genre_id: str
     created: str
