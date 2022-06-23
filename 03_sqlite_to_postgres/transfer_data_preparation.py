@@ -1,36 +1,45 @@
 """Classes for data preparation."""
+from dataclasses import asdict, astuple
+
+from typing import Iterable
+
+from psycopg2.extras import execute_values
 
 
 class SQLiteLoader:
     def __init__(self, connection):
         self.connection = connection
 
-    def load_movies(self, sqlite_tables, batch_size):
+    def load_movies(self, sqlite_tables: Iterable, batch_size: int) -> dict:
         cursor = self.connection.cursor()
+
         for table in sqlite_tables:
-            cursor.execute(f'select count(*) as rows_count from {table};')
-            rows_count = cursor.fetchone()['rows_count']
-            iter_count = rows_count // batch_size + 1 if rows_count % batch_size else rows_count // batch_size
-            for _ in range(iter_count):
-                cursor.execute(f'select * from {table};')
-                yield {'table_name': table, 'objects': list(cursor.fetchmany(batch_size))}
+            cursor.execute(f'SELECT * FROM {table};')
+
+            iterate = True
+            while iterate:
+                result = {'table_name': table, 'rows': list(cursor.fetchmany(batch_size))}
+                if not result['rows']:
+                    iterate = False
+                else:
+                    yield result
 
 
 class PostgresSaver:
     def __init__(self, pg_conn):
         self.pg_conn = pg_conn
 
-    def save_all_data(self, tables_and_datacls, fields_diff, table_part) -> None:
+    def save_all_data(self, tables_and_datacls: dict, table_part: dict) -> None:
         table_name = table_part['table_name']
         datacls = tables_and_datacls[table_name]
-        objects = table_part['objects']
-        datacls_intances = []
-        for obj in objects:
-            dict_obj = dict(obj)
-            for f_sqlite, f_postgre in fields_diff.items():
-                if dict_obj[f_sqlite]:
-                    dict_obj[f_postgre] = dict_obj.pop(f_sqlite)
-            datacls_intances.append(datacls(**dict_obj))
-        print(datacls_intances[0])
-        # insert_stmnt = f'INSERT INTO content.{table_name} ({keys}) VALUES ({vals}), ...; '
-        pass
+        rows = table_part['rows']
+
+        datacls_instances = [datacls(**row) for row in rows]
+        keys = ', '.join(asdict(datacls_instances[0]).keys())
+        tuple_instances = list(map(astuple, datacls_instances))
+
+        query = f'INSERT INTO content.{table_name} ({keys}) VALUES %s ON CONFLICT(id) DO NOTHING;'
+        cursor = self.pg_conn.cursor()
+        cursor.execute(f'select count(*) as cnt from content.{table_name};')
+
+        execute_values(cursor, query, tuple_instances)
