@@ -1,17 +1,16 @@
 """Dataclasses for data transfer."""
 from dataclasses import dataclass, field
 
-
-FIELDS_DIFF = {'created_at': 'created', 'updated_at': 'modified'}
+from constants import SQLITE_POSTGRES_FIELDS_DIFF as FIELDS_DIFF
 
 
 def datacls_wrapper(fields_diff: dict):
     """Implements a decorator to substitute the SQLite fields by the PostgreSQL fields."""
     def datacls_field_adapter(cls: dataclass):
         def adapter(**kwargs):
-            for f_sqlite, f_postgre in fields_diff.items():
+            for f_sqlite, f_postgres in fields_diff.items():
                 if kwargs.get(f_sqlite, None):
-                    kwargs[f_postgre] = kwargs.pop(f_sqlite)
+                    kwargs[f_postgres] = kwargs.pop(f_sqlite)
             return cls(**kwargs)
         return adapter
     return datacls_field_adapter

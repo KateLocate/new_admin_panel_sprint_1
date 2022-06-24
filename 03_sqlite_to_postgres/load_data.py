@@ -6,8 +6,8 @@ from psycopg2.extras import DictCursor
 
 from contextlib import contextmanager
 
+from constants import TABLES_VS_DATACLASSES
 from transfer_data_preparation import PostgresSaver, SQLiteLoader
-from transfer_dataclasses import Filmwork, Genre, GenreFilmwork, Person, PersonFilmwork
 
 
 @contextmanager
@@ -22,20 +22,14 @@ def sqlite3_conn_context(db_path: str) -> sqlite3.Connection:
 
 def load_from_sqlite(connection: sqlite3.Connection, pg_conn: _connection, batch_size: int):
     """Main function to transfer data from SQLite to Postgres"""
-    tables_vs_datacls = {
-        'genre': Genre,
-        'person': Person,
-        'film_work': Filmwork,
-        'genre_film_work': GenreFilmwork,
-        'person_film_work': PersonFilmwork,
-    }
-    tables = tables_vs_datacls.keys()
+
+    tables = TABLES_VS_DATACLASSES.keys()
     postgres_saver = PostgresSaver(pg_conn)
     sqlite_loader = SQLiteLoader(connection)
 
     data_generator = sqlite_loader.load_movies(tables, batch_size)
     for batch in data_generator:
-        postgres_saver.save_all_data(tables_vs_datacls, batch)
+        postgres_saver.save_all_data(TABLES_VS_DATACLASSES, batch)
 
 
 if __name__ == '__main__':
