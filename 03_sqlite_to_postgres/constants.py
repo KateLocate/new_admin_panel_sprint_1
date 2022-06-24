@@ -1,14 +1,11 @@
 """Constants for 03_sqlite_to_postgres project."""
-from transfer_dataclasses import Filmwork, Genre, GenreFilmwork, Person, PersonFilmwork
-
-
-TABLES_VS_DATACLASSES = {
-    'genre': Genre,
-    'person': Person,
-    'film_work': Filmwork,
-    'genre_film_work': GenreFilmwork,
-    'person_film_work': PersonFilmwork,
-}
+TABLES = [
+    'genre',
+    'person',
+    'film_work',
+    'genre_film_work',
+    'person_film_work',
+]
 
 # format: field_sqlite: field_postgres;
 SQLITE_POSTGRES_FIELDS_DIFF = {

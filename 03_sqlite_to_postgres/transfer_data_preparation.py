@@ -1,7 +1,5 @@
-"""Classes for data preparation."""
-from dataclasses import asdict, astuple
-
-from typing import Iterable
+"""Classes for data preparation for 03_sqlite_to_postgres project."""
+from dataclasses import asdict, astuple, dataclass
 
 from psycopg2.extras import execute_values
 
@@ -12,7 +10,7 @@ class SQLiteLoader:
     def __init__(self, connection):
         self.connection = connection
 
-    def load_movies(self, sqlite_tables: Iterable, batch_size: int = 100) -> dict:
+    def load_movies(self, sqlite_tables: list[str], batch_size: int = 100) -> dict:
         """
         Implements data extraction and returns table name and table rows.
 
@@ -43,7 +41,7 @@ class PostgresSaver:
     def __init__(self, pg_conn):
         self.pg_conn = pg_conn
 
-    def save_all_data(self, tables_and_datacls: dict, table_part: dict) -> None:
+    def save_all_data(self, tables_and_datacls: dict[str, dataclass], table_part: dict) -> None:
         """
         Implements data validation and loading into target tables.
 

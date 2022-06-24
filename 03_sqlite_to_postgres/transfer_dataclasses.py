@@ -1,4 +1,4 @@
-"""Dataclasses for data transfer."""
+"""Dataclasses for data transfer for 03_sqlite_to_postgres project."""
 from dataclasses import dataclass, field
 
 from constants import SQLITE_POSTGRES_FIELDS_DIFF as FIELDS_DIFF
@@ -68,3 +68,12 @@ class GenreFilmwork(UUIDField):
     film_work_id: str
     genre_id: str
     created: str
+
+
+DATACLASSES = [
+    Genre,
+    Person,
+    Filmwork,
+    GenreFilmwork,
+    PersonFilmwork,
+]
