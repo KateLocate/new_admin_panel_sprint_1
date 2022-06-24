@@ -20,24 +20,22 @@ def sqlite3_conn_context(db_path: str) -> sqlite3.Connection:
     conn.close()
 
 
-def load_from_sqlite(
-    connection: sqlite3.Connection, pg_conn: _connection, batch_size: int
-):
+def load_from_sqlite(connection: sqlite3.Connection, pg_conn: _connection, batch_size: int):
     """Main function to transfer data from SQLite to Postgres"""
-    sqlite_vs_datacls = {
+    tables_vs_datacls = {
         'genre': Genre,
         'person': Person,
         'film_work': Filmwork,
         'genre_film_work': GenreFilmwork,
         'person_film_work': PersonFilmwork,
     }
-    sqlite_tables = sqlite_vs_datacls.keys()
+    tables = tables_vs_datacls.keys()
     postgres_saver = PostgresSaver(pg_conn)
     sqlite_loader = SQLiteLoader(connection)
 
-    data_generator = sqlite_loader.load_movies(sqlite_tables, batch_size)
+    data_generator = sqlite_loader.load_movies(tables, batch_size)
     for batch in data_generator:
-        postgres_saver.save_all_data(sqlite_vs_datacls, batch)
+        postgres_saver.save_all_data(tables_vs_datacls, batch)
 
 
 if __name__ == '__main__':
