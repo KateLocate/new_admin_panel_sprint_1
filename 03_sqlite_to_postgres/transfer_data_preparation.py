@@ -40,6 +40,5 @@ class PostgresSaver:
 
         query = f'INSERT INTO content.{table_name} ({keys}) VALUES %s ON CONFLICT(id) DO NOTHING;'
         cursor = self.pg_conn.cursor()
-        cursor.execute(f'select count(*) as cnt from content.{table_name};')
 
         execute_values(cursor, query, tuple_instances)
