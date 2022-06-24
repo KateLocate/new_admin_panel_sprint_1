@@ -2,14 +2,19 @@
 from dataclasses import dataclass, field
 
 
-def datacls_field_adapter(cls):
-    def adapter(**kwargs):
-        fields_diff = {'created_at': 'created', 'updated_at': 'modified'}
-        for f_sqlite, f_postgre in fields_diff.items():
-            if kwargs.get(f_sqlite, None):
-                kwargs[f_postgre] = kwargs.pop(f_sqlite)
-        return cls(**kwargs)
-    return adapter
+FIELDS_DIFF = {'created_at': 'created', 'updated_at': 'modified'}
+
+
+def datacls_wrapper(fields_diff: dict):
+    """Implements a decorator to substitute the SQLite fields by the PostgreSQL fields."""
+    def datacls_field_adapter(cls: dataclass):
+        def adapter(**kwargs):
+            for f_sqlite, f_postgre in fields_diff.items():
+                if kwargs.get(f_sqlite, None):
+                    kwargs[f_postgre] = kwargs.pop(f_sqlite)
+            return cls(**kwargs)
+        return adapter
+    return datacls_field_adapter
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -23,7 +28,7 @@ class UUIDField:
     id: str
 
 
-@datacls_field_adapter
+@datacls_wrapper(FIELDS_DIFF)
 @dataclass(frozen=True, kw_only=True)
 class Filmwork(UUIDField, TimeStamped):
     title: str
@@ -35,14 +40,14 @@ class Filmwork(UUIDField, TimeStamped):
     certificate: str = field(default='')
 
 
-@datacls_field_adapter
+@datacls_wrapper(FIELDS_DIFF)
 @dataclass(frozen=True, kw_only=True)
 class Person(UUIDField, TimeStamped):
     full_name: str
     gender: str = field(default='')
 
 
-@datacls_field_adapter
+@datacls_wrapper(FIELDS_DIFF)
 @dataclass(frozen=True, kw_only=True)
 class PersonFilmwork(UUIDField):
     film_work_id: str
@@ -51,14 +56,14 @@ class PersonFilmwork(UUIDField):
     created: str
 
 
-@datacls_field_adapter
+@datacls_wrapper(FIELDS_DIFF)
 @dataclass(frozen=True, kw_only=True)
 class Genre(UUIDField, TimeStamped):
     name: str
     description: str
 
 
-@datacls_field_adapter
+@datacls_wrapper(FIELDS_DIFF)
 @dataclass(frozen=True, kw_only=True)
 class GenreFilmwork(UUIDField):
     film_work_id: str
