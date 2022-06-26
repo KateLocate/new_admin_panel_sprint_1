@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-20 13:03+0000\n"
+"POT-Creation-Date: 2022-06-26 13:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,118 +18,142 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: movies/apps.py:8
-msgid "movies"
-msgstr "Movies"
+#: movies/admin.py:29
+#, fuzzy
+#| msgid "Person"
+msgid "person"
+msgstr "Person"
 
-#: movies/models.py:9 movies/models.py:60
-msgid "created"
-msgstr "created"
-
-#: movies/models.py:10
-msgid "modified"
-msgstr "modified"
-
-#: movies/models.py:24
-msgid "name"
-msgstr "name"
-
-#: movies/models.py:25 movies/models.py:41
-msgid "description"
-msgstr "description"
-
-#: movies/models.py:29
-msgid "Genre"
-msgstr "Genre"
-
-#: movies/models.py:30
-msgid "Genres"
-msgstr "Genres"
-
-#: movies/models.py:37
-msgid "title"
-msgstr "title"
-
-#: movies/models.py:38
-msgid "certificate"
-msgstr "certificate"
-
-#: movies/models.py:39
-msgid "file"
-msgstr "file path"
-
-#: movies/models.py:42
-msgid "creation_date"
-msgstr "creation Date"
-
-#: movies/models.py:43
-msgid "rating"
-msgstr "rating"
-
-#: movies/models.py:46
-msgid "type"
-msgstr "type"
-
-#: movies/models.py:50
-msgid "Film"
-msgstr "Film"
-
-#: movies/models.py:51
-msgid "Films"
-msgstr "Films"
-
-#: movies/models.py:64
+#: movies/admin.py:36
 #, fuzzy
 #| msgid "Genre"
-msgid "Film Genre"
+msgid "genre"
 msgstr "Genre"
 
-#: movies/models.py:65
+#: movies/admin.py:52 movies/models.py:67
 #, fuzzy
 #| msgid "Genres"
 msgid "Film Genres"
 msgstr "Genres"
 
-#: movies/models.py:72
+#: movies/apps.py:12
+msgid "movies"
+msgstr "Movies"
+
+#: movies/models.py:15 movies/models.py:60
+msgid "created"
+msgstr "created"
+
+#: movies/models.py:16
+msgid "modified"
+msgstr "modified"
+
+#: movies/models.py:38
+msgid "name"
+msgstr "name"
+
+#: movies/models.py:39 movies/models.py:140
+msgid "description"
+msgstr "description"
+
+#: movies/models.py:45
+msgid "Genre"
+msgstr "Genre"
+
+#: movies/models.py:46
+msgid "Genres"
+msgstr "Genres"
+
+#: movies/models.py:66
+#, fuzzy
+#| msgid "Genre"
+msgid "Film Genre"
+msgstr "Genre"
+
+#: movies/models.py:84
 msgid "full_name"
 msgstr "name"
 
-#: movies/models.py:73
+#: movies/models.py:85
 msgid "gender"
 msgstr "gender"
 
-#: movies/models.py:77
+#: movies/models.py:91
 msgid "Person"
 msgstr "Person"
 
-#: movies/models.py:78
+#: movies/models.py:92
 msgid "Persons"
 msgstr "Persons"
 
-#: movies/models.py:87
+#: movies/models.py:106
 msgid "role"
 msgstr "role"
 
-#: movies/models.py:92
+#: movies/models.py:113
 msgid "Person From Film"
 msgstr "Person From Film"
 
-#: movies/models.py:93
+#: movies/models.py:114
 msgid "Persons From Film"
 msgstr "Persons From Film"
 
-#: movies/models_choices.py:6
+#: movies/models.py:135
+msgid "title"
+msgstr "title"
+
+#: movies/models.py:136
+msgid "certificate"
+msgstr "certificate"
+
+#: movies/models.py:137
+msgid "file"
+msgstr "file path"
+
+#: movies/models.py:141
+msgid "creation_date"
+msgstr "creation Date"
+
+#: movies/models.py:142
+msgid "rating"
+msgstr "rating"
+
+#: movies/models.py:145
+msgid "type"
+msgstr "type"
+
+#: movies/models.py:151
+msgid "Film"
+msgstr "Film"
+
+#: movies/models.py:152
+msgid "Films"
+msgstr "Films"
+
+#: movies/models_choices.py:10
 msgid "male"
 msgstr "male"
 
-#: movies/models_choices.py:7
+#: movies/models_choices.py:11
 msgid "female"
 msgstr "female"
 
-#: movies/models_choices.py:11
+#: movies/models_choices.py:17
 msgid "movie"
 msgstr "movie"
 
-#: movies/models_choices.py:12
+#: movies/models_choices.py:18
 msgid "tv_show"
 msgstr "TV show"
+
+#: movies/models_choices.py:24
+msgid "actor"
+msgstr "actor"
+
+#: movies/models_choices.py:25
+msgid "director"
+msgstr "director"
+
+#: movies/models_choices.py:26
+msgid "writer"
+msgstr "writer"

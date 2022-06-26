@@ -16,3 +16,11 @@ class FilmworkType(models.TextChoices):
 
     MOVIE = 'movie', _('movie')
     TV_SHOW = 'tv_show', _('tv_show')
+
+
+class PersonRole(models.TextChoices):
+    """Represents TextChoices for person role attribute."""
+
+    ACTOR = 'actor', _('actor')
+    DIRECTOR = 'director', _('director')
+    WRITER = 'writer', _('writer')
