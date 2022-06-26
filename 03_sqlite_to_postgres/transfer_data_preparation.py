@@ -26,13 +26,8 @@ class SQLiteLoader:
         for table in sqlite_tables:
             cursor.execute(f'SELECT * FROM {table};')
 
-            iterate = True
-            while iterate:
-                batch = {'table_name': table, 'rows': list(cursor.fetchmany(batch_size))}
-                if not batch['rows']:
-                    iterate = False
-                else:
-                    yield batch
+            while batch := cursor.fetchmany(batch_size):
+                yield {'table_name': table, 'rows': batch}
 
 
 class PostgresSaver:
