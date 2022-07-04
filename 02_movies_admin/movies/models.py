@@ -36,7 +36,7 @@ class Genre(UUIDMixin, TimeStampedMixin):
     """Stores a single genre entry."""
 
     name = models.CharField(_('name'), max_length=255)
-    description = models.TextField(_('description'), blank=True)
+    description = models.TextField(_('description'), null=True, blank=True)
 
     class Meta:
         """Meta information on :model:`movies.Genre`."""
